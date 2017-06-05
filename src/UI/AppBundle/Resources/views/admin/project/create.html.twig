@@ -1,0 +1,7 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block main %}
+    <h1>{{ 'create_new_project'|trans([], 'project') }}</h1>
+
+    {% include 'admin/project/_form.html.twig' with {form: form} %}
+{% endblock %}

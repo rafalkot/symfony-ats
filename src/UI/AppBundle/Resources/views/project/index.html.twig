@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>{{ 'title.homepage'|trans|raw }}</h1>
+    </div>
+
+        {% for project in projects %}
+            <article class="post">
+            <h2>
+                <a href="{{ path('project_view', { id: project.id }) }}">
+                    {{ project.name }}
+                </a>
+            </h2>
+
+            <p class="post-metadata">
+                <span class="metadata"><i class="fa fa-calendar"></i> {{ project.duration.start|localizeddate('long', 'medium', null, 'UTC') }}</span>
+                <span class="metadata"><i class="fa fa-user"></i> {{ project.vacancies }}</span>
+            </p>
+
+            </article>
+                    {% else %}
+            <div class="well">{{ 'post.no_posts_found'|trans }}</div>
+        {% endfor %}
+
+{% endblock %}

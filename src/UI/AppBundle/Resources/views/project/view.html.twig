@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'blog_post_show' %}
+
+{% block main %}
+    <h1>{{ project.name }}</h1>
+
+
+{% endblock %}
+
+{% block sidebar %}
+    {% if is_granted('edit', project) %}
+        <div class="section">
+            <a class="btn btn-lg btn-block btn-success" href="{{ path('admin_post_edit', { id: post.id }) }}">
+                <i class="fa fa-edit" aria-hidden="true"></i> {{ 'action.edit_post'|trans }}
+            </a>
+        </div>
+    {% endif %}
+
+    {# the parent() function includes the contents defined by the parent template
+      ('base.html.twig') for this block ('sidebar'). This is a very convenient way
+      to share common contents in different templates #}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

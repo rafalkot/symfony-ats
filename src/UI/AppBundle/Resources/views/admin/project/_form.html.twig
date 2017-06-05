@@ -1,0 +1,16 @@
+{{ form_errors(form) }}
+
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_row(form.name) }}
+{{ form_row(form.startDate) }}
+{{ form_row(form.endDate) }}
+{{ form_row(form.vacancies) }}
+
+<input type="submit" value="{{ 'button.save_project'|trans([], 'project') }}" class="btn btn-primary"/>
+
+{{ form_widget(form.saveAndCreateNew, { label: 'button.save_project_and_create_new'|trans([], 'project'), attr: { class: 'btn btn-primary' } }) }}
+
+<a href="{{ path('admin_project_index') }}" class="btn btn-link">
+    {{ 'common.back_to_list'|trans }}
+</a>
+{{ form_end(form) }}

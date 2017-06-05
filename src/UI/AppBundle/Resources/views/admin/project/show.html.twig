@@ -1,0 +1,24 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block main %}
+    <h1>{{ 'project_details'|trans([], 'project') }}</h1>
+
+    <table class="table">
+        <tr>
+            <th style="width: 30%">{{ 'name'|trans([], 'project') }}</th>
+            <td>{{ project.name }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'start_date'|trans([], 'project') }}</th>
+            <td>{{ project.startDate|localizeddate('medium', 'none') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'end_date'|trans([], 'project') }}</th>
+            <td>{{ project.endDate ? project.endDate|localizeddate('medium', 'none') : null}}</td>
+        </tr>
+        <tr>
+            <th>{{ 'vacancies'|trans([], 'project') }}</th>
+            <td>{{ project.vacancies ? project.vacancies : 'no_limit'|trans([], 'project') }}</td>
+        </tr>
+    </table>
+{% endblock %}
